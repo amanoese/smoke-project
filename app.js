@@ -1,8 +1,11 @@
 var app = require('express')();
 var http = require('http').Server(app);
 
+app.set('view engine', 'pug');
+app.set('views', __dirname + '/views');
+
 app.get('/', function(req, res){
-  res.send('<h1>Hello world</h1>');
+  res.render('index', { title: 'Express Sample' });
 });
 
 http.listen(3000, function(){
