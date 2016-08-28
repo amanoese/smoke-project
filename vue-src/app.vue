@@ -1,6 +1,6 @@
 <template lang="pug">
-div
-  h1 {{msg}}
+h1 {{msg}}
+p hellow,world!
 </template>
 
 <script>
@@ -12,3 +12,7 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>

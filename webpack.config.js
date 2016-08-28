@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './vue-src/app.js',
+  entry: './vue-src/main.js',
   output: {
     path: './views',
     publicPath: 'views/',
