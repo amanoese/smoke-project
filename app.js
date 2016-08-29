@@ -21,8 +21,12 @@ var io = socket.listen('3001', () => {
 
 io.on('connection', (socket) => {
   socket.emit('clientMessege','Hellow, Websocket!');
+  var id = setInterval(()=>{
+    socket.emit('senserParam',Math.floor(Math.random() * 10));
+  },500);
   socket.on('clientMessege', (msg) => {
-    console.log(msg);
+    clearInterval(id);
+    console.log('clearInterval',id);
     socket.emit('serverMessege',msg);
   });
   console.log('connected websocket');

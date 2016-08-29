@@ -4,6 +4,8 @@ p {{serverMsg}}
 ul
   li(v-for="item in messeges") {{item}}
 input(v-model="inValue" @keyup.enter="sendMessege")
+div(v-for="item in senserParam" track-by="$index")
+  span(v-text="item")
 </template>
 
 <script>
@@ -11,6 +13,9 @@ export default {
   sockets:{
     connect () {
       console.log('socket connected')
+    },
+    senserParam(param){
+      this.senserParam.push(param);
     },
     serverMessege (val) {
       this.serverMsg = val;
@@ -21,6 +26,7 @@ export default {
       msg: 'Hello from vue-loader!',
       serverMsg : 'Hellow,World!',
       messeges : [],
+      senserParam : [],
       inValue : "sample text"
     }
   },
