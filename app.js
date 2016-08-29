@@ -23,6 +23,7 @@ io.on('connection', (socket) => {
   socket.emit('clientMessege','Hellow, Websocket!');
   socket.on('clientMessege', (msg) => {
     console.log(msg);
+    socket.emit('serverMessege',msg);
   });
   console.log('connected websocket');
 });

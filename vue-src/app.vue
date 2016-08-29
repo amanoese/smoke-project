@@ -1,6 +1,6 @@
 <template lang="pug">
 h1 {{msg}}
-p hellow,world!
+p {{serverMsg}}
 ul
   li(v-for="item in messeges") {{item}}
 input(v-model="inValue" @keyup.enter="sendMessege")
@@ -12,13 +12,14 @@ export default {
     connect () {
       console.log('socket connected')
     },
-    clientMessege (val) {
-      console.log(val);
+    serverMessege (val) {
+      this.serverMsg = val;
     }
   },
   data () {
     return {
       msg: 'Hello from vue-loader!',
+      serverMsg : 'Hellow,World!',
       messeges : [],
       inValue : "sample text"
     }
@@ -27,6 +28,7 @@ export default {
     sendMessege () {
       this.messeges.push(this.inValue);
       this.$socket.emit('clientMessege', this.inValue);
+      this.inValue = '';
       console.log('clientMessege', this.inValue);
     }
   }
